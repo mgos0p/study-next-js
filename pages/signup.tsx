@@ -5,6 +5,7 @@ const SignupPage: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -20,13 +21,16 @@ const SignupPage: FC = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
     // パスワードと確認用パスワードが一致するかチェック
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
+      setIsLoading(false);
       return;
     }
     // ここでアカウント作成ロジックを実装します。
     console.log(`Creating account with email: ${email} and password: ${password}`);
+    setIsLoading(false);
   };
 
   return (
