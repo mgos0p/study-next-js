@@ -17,7 +17,9 @@ const TodoList: FC = () => {
   const handleAddTodo = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (todoText) {
-      alert("Add!");
+      todoList.push(todoText);
+      setTodoList(todoList);
+      // alert("Add!");
     } else {
       alert("Todo is empty!");
     }
@@ -33,7 +35,13 @@ const TodoList: FC = () => {
           </div>
         </div>
         <div>
-          <Todo title="Add another component to Tailwind Components" handleDone={ handleDone } handleRemove={ handleRemove }/>
+          {
+            todoList.length && todoList.map((todo) => {
+              return (
+                <Todo key={todo} title={todo} handleDone={handleDone} handleRemove={handleRemove} />
+              );
+            })
+          }
         </div>
       </div>
     </div>
