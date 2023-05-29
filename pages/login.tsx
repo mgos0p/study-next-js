@@ -1,6 +1,6 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
-import Spinner from '../components/Spinner';  // Spinnerコンポーネントをインポート
+import Spinner from '@/components/Spinner';  // Spinnerコンポーネントをインポート
 
 const LoginPage: FC = () => {
   const [username, setUsername] = useState<string>('');

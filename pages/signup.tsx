@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
-import Spinner from '../components/Spinner';  // Spinnerコンポーネントをインポート
+import Spinner from '@/components/Spinner';  // Spinnerコンポーネントをインポート
 
 const SignupPage: FC = () => {
   const [email, setEmail] = useState<string>('');
