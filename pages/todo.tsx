@@ -12,7 +12,7 @@ const TodoList: FC = () => {
           </div>
         </div>
         <div>
-          <Todo/>
+          <Todo title="Add another component to Tailwind Components"/>
         </div>
       </div>
     </div>
