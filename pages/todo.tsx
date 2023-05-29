@@ -1,6 +1,14 @@
-import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
+import React, { FC, useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
 import Todo from '@/components/Todo';
 const TodoList: FC = () => {
+  const handleDone = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    alert("Done!");
+  };
+  const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    alert("Remove!");
+  };
   return (
     <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
       <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
@@ -12,7 +20,7 @@ const TodoList: FC = () => {
           </div>
         </div>
         <div>
-          <Todo title="Add another component to Tailwind Components"/>
+          <Todo title="Add another component to Tailwind Components" handleDone={ handleDone } handleRemove={ handleRemove }/>
         </div>
       </div>
     </div>
