@@ -1,6 +1,10 @@
 import React, { FC, useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
 import Todo from '@/components/Todo';
 const TodoList: FC = () => {
+  const [todoText, setTodoText] = useState<string>('');
+  const handleTodoTextChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setTodoText(event.target.value);
+  };
   const handleDone = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     alert("Done!");
@@ -15,7 +19,7 @@ const TodoList: FC = () => {
         <div className="mb-4">
           <h1 className="text-grey-darkest">Todo List</h1>
           <div className="flex mt-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo"/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 placeholder-gray-500 text-gray-900" placeholder="Add Todo" value={todoText} onChange={handleTodoTextChange}/>
             <button className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add</button>
           </div>
         </div>
