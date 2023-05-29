@@ -10,10 +10,15 @@ const TodoList: FC = () => {
     event.preventDefault();
     alert("Done!");
   };
-  const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleRemove = (event: MouseEvent<HTMLButtonElement>,index:number) => {
     event.preventDefault();
+    // const newTodo = todoList.filter(isDeleteTodoIndex(n,index));
+    // setTodoList(newTodo);
     alert("Remove!");
   };
+  const isDeleteTodoIndex = (index: number, deleteIndex: number) => {
+    return index !== deleteIndex;
+  }
   const handleAddTodo = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (todoText) {
@@ -36,9 +41,9 @@ const TodoList: FC = () => {
         </div>
         <div>
           {
-            todoList.length && todoList.map((todo) => {
+            todoList.length && todoList.map((todo,index) => {
               return (
-                <Todo key={todo} title={todo} handleDone={handleDone} handleRemove={handleRemove} />
+                <Todo key={todo} title={todo} handleDone={handleDone} handleRemove={(index) => handleRemove(index)} />
               );
             })
           }
