@@ -3,7 +3,7 @@ import React, { FC, MouseEvent } from 'react';
 type TodoProps = {
   title: string;
   handleDone: (event:MouseEvent<HTMLButtonElement>) => void;
-  handleRemove: (event:MouseEvent<HTMLButtonElement>) => void;
+  handleRemove: () => void;
 };
 const Todo: FC<TodoProps> = ({ title,handleDone,handleRemove }) => (
   <div className="flex mb-4 items-center">

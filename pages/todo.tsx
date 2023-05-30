@@ -10,21 +10,18 @@ const TodoList: FC = () => {
     event.preventDefault();
     alert("Done!");
   };
-  const handleRemove = (event: MouseEvent<HTMLButtonElement>,index:number) => {
-    event.preventDefault();
-    // const newTodo = todoList.filter(isDeleteTodoIndex(n,index));
-    // setTodoList(newTodo);
-    alert("Remove!");
+  const handleRemove = (index: number) => {
+    const newTodoList = [...todoList];  // 新しい配列を作成
+    newTodoList.splice(index, 1);  // 新しい配列から要素を削除
+    setTodoList(newTodoList);  // 新しい配列を状態として設定
+    // alert("Remove!");
   };
-  const isDeleteTodoIndex = (index: number, deleteIndex: number) => {
-    return index !== deleteIndex;
-  }
   const handleAddTodo = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (todoText) {
       todoList.push(todoText);
       setTodoList(todoList);
-      // alert("Add!");
+      setTodoText('');
     } else {
       alert("Todo is empty!");
     }
@@ -43,7 +40,7 @@ const TodoList: FC = () => {
           {
             todoList.length && todoList.map((todo,index) => {
               return (
-                <Todo key={todo} title={todo} handleDone={handleDone} handleRemove={(index) => handleRemove(index)} />
+                <Todo key={todo} title={todo} handleDone={handleDone} handleRemove={() => handleRemove(index)} />
               );
             })
           }
