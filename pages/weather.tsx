@@ -110,5 +110,22 @@ const WeatherPage: FC = () => {
 
     fetchData();
   }, []);
+  return (
+    <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+      <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+      <div className="flex flex-wrap">
+        <h1 className="flex-auto text-lg font-semibold text-slate-900">
+          {weather && weather.publicTimeFormatted}
+        </h1>
+        <div className="text-lg font-semibold text-slate-500">
+          {weather && weather.title}
+        </div>
+      </div>
+      <p className="text-sm text-slate-700 whitespace-pre whitespace-break-spaces">
+        {weather && weather.description.bodyText}
+      </p>
+    </div>
+  </div>
+  );
 };
 export default WeatherPage;
